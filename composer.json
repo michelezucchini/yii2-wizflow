@@ -1,5 +1,5 @@
 {
-	"name" : "raoul2000/yii2-wizflow",
+	"name" : "michelezucchini/yii2-wizflow",
 	"description" : "The wizard UI pattern implemented using yii2-workfl",
 	"keywords": ["yii2","extension","workflow"," wizard"],
 	"homepage" : "http://raoul2000.github.io/yii2-wizflow/guide-README.html",
