@@ -2,7 +2,6 @@
 namespace raoul2000\wizflow;
 
 use Yii;
-use raoul2000\workflow\base\Status;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
 
@@ -123,8 +122,16 @@ class WizflowManager extends \yii\base\Object
 		}
 
 		$status = $this->workflowSource->getStatus($attributes['status']);
+
+        $metaModel = $status->getMetadata('model');
+		if (is_string($metaModel)) {
+            $modelData['class'] = $metaModel;
+        } else {
+            $modelData = $metaModel;
+        }
+
 		$config = array_merge(
-			$status->getMetadata('model'),
+            $modelData,
 			$attributes
 		);
 		$instance = Yii::createObject($config);
@@ -258,7 +265,13 @@ class WizflowManager extends \yii\base\Object
 		$workflow = $this->workflowSource->getWorkflow('Wizflow');
 
 		$status = $workflow->getInitialStatus();
-		$config = $status->getMetadata('model');
+
+		$metaModel = $status->getMetadata('model');
+        if (is_string($metaModel)) {
+            $config['class'] = $metaModel;
+        } else {
+            $config = $metaModel;
+        }
 		$config['status'] =  $status->getId();
 
 		$firstStep = $this->createInstance($config);
