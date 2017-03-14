@@ -17,6 +17,10 @@ class WizflowManager extends \yii\base\Object
 		'class' => '\raoul2000\workflow\base\SimpleWorkflowBehavior',
 		'defaultWorkflowId' => 'Wizflow'
 	];
+    /**
+     * @var string name of the workflow
+     */
+    public $workflowName = '';
 	/**
 	 * @var string name of the workflow behavior that is attached to all wizards steps
 	 */
@@ -262,7 +266,7 @@ class WizflowManager extends \yii\base\Object
 	 */
 	public function start()
 	{
-		$workflow = $this->workflowSource->getWorkflow('Wizflow');
+		$workflow = $this->workflowSource->getWorkflow($this->workflowName);
 
 		$status = $workflow->getInitialStatus();
 
