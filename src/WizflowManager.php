@@ -141,7 +141,10 @@ class WizflowManager extends \yii\base\Object
 		$instance = Yii::createObject($config);
 		$instance->attachBehavior(
 			$this->workflowBehaviorName,
-			$this->workflowBehavior
+            [
+                'class' => '\raoul2000\workflow\base\SimpleWorkflowBehavior',
+                'defaultWorkflowId' => $this->workflowName
+            ]
 		);
 
 		return $instance;
