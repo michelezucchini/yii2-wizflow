@@ -17,7 +17,7 @@ class WizardPlayAction extends \yii\base\Action
      * @param string $nav
      * @return string
      */
-    public function run($nav = '')
+    public function run($nav = 'start')
     {
         $wizard = Yii::$app->get($this->wizardManagerName);
 
