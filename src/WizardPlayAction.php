@@ -17,7 +17,7 @@ class WizardPlayAction extends \yii\base\Action
      * @param string $nav
      * @return string
      */
-    public function run($nav = 'start')
+    public function run($nav = '')
     {
         $wizard = Yii::$app->get($this->wizardManagerName);
 
@@ -53,7 +53,6 @@ class WizardPlayAction extends \yii\base\Action
 
                         }
                     }
-
                     if ($model->validate()) {
                         // current step has been completed : save it and get next step
                         $wizard->updateCurrentStep($model);
